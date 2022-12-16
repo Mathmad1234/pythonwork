@@ -3,7 +3,7 @@
 input = int(input("Enter a number: ")) 
 
 def print_tree():
-    print('Marry Christmas')
+    print('Merry Christmas')
     spaces = input
     start = 1
     end = input + 1
@@ -17,4 +17,3 @@ if input >=3 and input <= 100:
     print_tree()
 else:
     print('Invalid Input. Exiting...')
-
