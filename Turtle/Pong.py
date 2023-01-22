@@ -6,6 +6,7 @@ import turtle
 
 window = turtle.Screen()
 window.title("Pong")
+
 window.bgcolor("black")
 window.setup(width=800, height=600)
 
@@ -38,6 +39,22 @@ player2.penup()
 player2.speed(0)
 player2.goto(350, 0)
 
+# Pen
+pen = turtle.Turtle()
+pen.penup()
+pen.hideturtle()
+pen.color("white")
+pen.speed(0)
+pen.goto(0, 260)
+pen.write( name + "'s score:" + str(Score), align="center", font=("Courier", 24, "normal"))
+pen2 = turtle.Turtle()
+pen.penup()
+pen.hideturtle()
+pen.color("white")
+pen.speed(0)
+pen.goto(0, 260)
+pen.write( name + "'s score:" + str(Score), align="center", font=("Courier", 24, "normal"))
+
 # functions
 def player1_up():
     y = player1.ycor()
@@ -59,6 +76,18 @@ def player2_down():
     y -= 10
     player2.sety(y)
 
+def play():
+    player1.showturtle()
+    player2.showturtle()
+    ball.showturtle()
+    ball.goto(0, 0)
+    ball.dx *= -1
+    pen.clear()
+    pen.penup()
+    pen.goto(0, 260)
+    pen.write( name + "'s score:" + str(Score), align="center", font=("Courier", 24, "normal"))
+    
+
 # key binds
 window.listen()
 window.onkeypress(player1_up, "w")
@@ -67,6 +96,7 @@ window.onkeypress(player1_up, "W")
 window.onkeypress(player1_down, "S")
 window.onkeypress(player2_up, "Up")
 window.onkeypress(player2_down, "Down")
+window.onkeypress(play, "p")
 
 
 # ball
@@ -77,15 +107,6 @@ ball.penup()
 ball.speed(0)
 ball.dx = 3.5
 ball.dy = 3.5
-
-# Pen
-pen = turtle.Turtle()
-pen.penup()
-pen.hideturtle()
-pen.color("white")
-pen.speed(0)
-pen.goto(0, 260)
-pen.write( name + "'s score:" + str(Score), align="center", font=("Courier", 24, "normal"))
 
 # main game loop
 while True:
@@ -105,13 +126,14 @@ while True:
         ball.dy *= -1
     
     if ball.xcor() > 390:
-        pen2 = turtle.Turtle()
-        pen2.hideturtle()
-        pen2.color("white")
+        pen = turtle.Turtle()
+        pen.hideturtle()
+        pen.color("white")
         ball.hideturtle()
         player1.hideturtle()
         player2.hideturtle()
-        pen2.write("Game over", align="center", font=("Courier", 24, "normal"))
+        pen.goto(0, 0)
+        pen.write("Game over", align="center", font=("Courier", 24, "normal"))
     
     if ball.xcor() < -390:
         pen2 = turtle.Turtle()
