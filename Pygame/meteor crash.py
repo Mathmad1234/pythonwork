@@ -1,15 +1,20 @@
-import Pygame
+import pygame
 import random
 
 # intialize pygame
-Pygame.init()
+pygame.init()
 
 # window
-wn = Pygame.display.set_mode((600, 800))
+wn = pygame.display.set_mode((1000, 600))
+
+# title and icon
+pygame.display.set_caption('meteor crash')
+icon = pygame.image.load('meteor.png')
+pygame.display.set_icon(icon)
 
 # main game loop
 running = True
 while running:
-    for event in Pygame.event.get():
-        if Pygame.type == Pygame.QUIT:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
             running = False
